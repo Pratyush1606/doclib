@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<script type="text/javascript">
+  var check = function() {
+  if (document.getElementById('pswd').value ==
+    document.getElementById('cpswd').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+<form action="{% url 'doclib:register_Digimocker' %}" method="POST" enctype="multipart/form-data">>
+  {% csrf_token %}
+  <div class="jumbotron">
+    <label for="">Name (Minimum 6 chracters)<input type="text"  name="name" value="" placeholder="Enter Your Name" required></label>
+    <br>
+    <label for="">Email <input type="email" name="email" value="" placeholder="Enter Your Email" required></label>
+    <br>
+    <label for="">Password <input id="pswd" type="password"  name="password" value="" placeholder="Enter the Password" required onkeyup='check();'></label>
+    <br>
+    <label for="">Confirm Password <input id="cpswd" type="password"  name="confirmpassword" value="" placeholder="Enter the Password Again" required onkeyup='check();'></label>
+    <br>
+    <button type="submit" class="btn btn-success">Register</button>
+    <span id='message'></span>
+    <button class="btn btn-success"><a href="{% url 'doclib:login_Digimocker' %}">Login</a></button>
+  </div>
+</form>
+
+{% endblock %}

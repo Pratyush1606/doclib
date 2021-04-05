@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body_block %}
+<br>
+<form action="{% url 'doclib:upload_To_Digimocker' %}" method="POST">
+  {% csrf_token %}
+  <div class="jumbotron">
+    <input type="text"  name="name" value="" placeholder="Enter File Name" required>
+    <br>
+    <input type="email"  name="email" value="" placeholder="Enter Your Registered Email" required>
+    <br>
+    <input type="text"  name="identifier" value="" placeholder="Enter identifier" required>
+    <br>
+    <input type="url"  name="url" value="" placeholder="Enter file url" required>
+    <br>
+    <button type="submit" class="btn btn-success">Upload</button>
+  </div>
+</form>
+
+{% endblock %}

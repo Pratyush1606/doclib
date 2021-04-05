@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<h2>Data Source Selected as Local Storage</h2>
+<form action="{% url 'doclib:local_api' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="jumbotron">
+      <div class="form-group">
+        <label for="file">Local files</label>
+        <input type="file" class="form-control-file" id="file" name="files" required multiple>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+    </div>
+</form>
+{% endblock %}

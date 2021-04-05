@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head_block %}
+  {% block title_block %}
+    <title>Pick Data Source</title>
+  {% endblock %}
+  {% load static %}
+  <script src="{% static '/js/google_picker.js' %}" type="text/javascript"></script>
+  <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+
+{% endblock %}
+
+{% block body_block %}
+<h2>Pick Data Source</h2>
+  <nav class="navbar navbar-inverse navbar-static-top" style="background-color: #563d7c;">
+    <div class="container">
+      <ul class="nav navbar-nav">
+          <li><a class="navbar-link" onclick="loadPicker()">Google drive</a></li>
+          <li><a class="navbar-link" href="{% url 'doclib:local_api' %}">Local storage</a></li>
+          <li><a class="navbar-link" href="{% url 'doclib:login_Digimocker' %}">DigiMocker</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {% if files %}
+  <div class="text-center">
+    <a class="btn btn-primary" href="{% url 'doclib:upload' %}">Upload the files</a>
+  </div>
+  <table class="table table-hover">
+      <thead>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Url</th>
+      </thead>
+      {% for f in files %}
+        <tr>
+            <td>{{ f.name }}</td>
+            <td>{{ f.size }}</td>
+            <td>{{ f.url }}</td>
+            <td><a href="{% url 'doclib:deleteFile' f.id %}"><i class="fa fa-trash"></i></a></td>
+        </tr>
+      {% endfor %}
+  </table>
+  <div class="text-center">
+    <a class="btn btn-primary" href="{% url 'doclib:upload' %}">Upload the files</a>
+  </div>
+  {% endif %}
+{% endblock %}

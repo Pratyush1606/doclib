@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+{% load static %}
+<h2>Document Library for storing documents</h2>
+<div class="jumbotron">
+  {% if message %}
+    <div class="alert alert-success">
+      <h3>Files successfully uploaded!</h3>
+    </div>
+  {% endif %}
+  <h3>Select storage service: </h3>
+  <br>
+  <ul>
+    <li>  <p> <a href="{% url 'doclib:awsS3' %}"><img src="{% static 'img/aws-s3.png' %}" alt="aws_s3" style="width:200px;height:60px;"></a></p></li>
+    <li>  <p> <a href="{% url 'doclib:gcs' %}"><img src="{% static 'img/gcs.png' %}" alt="google cloud storage" style="width:200px;height:100px;"></a> </p></li>
+  </ul>
+</div>
+
+
+{% endblock %}

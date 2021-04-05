@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body_block %}
+<h2>Data Source Selected as Digimocker</h2>
+<form action="{% url 'doclib:login_Digimocker' %}" method="POST">
+  {% csrf_token %}
+  <div class="jumbotron">
+    <div class="form-group">
+      <label for="email">Registered email address</label>
+      <input type="email" class="form-control" id="email" name="email" value="" placeholder="Enter Your Registered Email" required>
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" value="" placeholder="Enter Password" required>
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+    <button class="btn btn-success" id="button"><a href="{% url 'doclib:register_Digimocker' %}">Register</a></button>
+  </div>
+</form>
+{% endblock %}

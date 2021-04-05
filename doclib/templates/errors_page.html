@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<div class="jumbotron">
+  <p class='error'>{{error}}</p>
+  {% if credentials_error %}
+    <p>Check the credentials of storage service again</p>
+  {% endif %}
+  <p>Uploaded files have been removed for security</p>
+  <p><a href="{% url 'doclib:selectSS' %}">Return to Home to start the process again</a></p>
+</div>
+
+{% endblock %}
