@@ -103,7 +103,9 @@ demo_proj
 
 6. Run ``python manage.py migrate`` to create the doclib models.
 
-7. Start the development server and visit ``http://localhost:8000/doclib/`` to access the doclib.
+7. Start the development server by running ``python manage.py runserver localhost:8000``
+
+8. Visit ``http://localhost:8000/doclib/`` to access the doclib.
 
 ## **REPOSITORY WALKTHROUGH**
 
@@ -139,4 +141,6 @@ demo_proj
 
 7. Run ``python manage.py migrate`` to create the doclib models.
 
-8. Start the development server and visit ``http://localhost:8000/doclib/`` to access the doclib.
+8. Start the development server by running ``python manage.py runserver localhost:8000``
+
+9. Visit ``http://localhost:8000/doclib/`` to access the doclib.
