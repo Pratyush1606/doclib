@@ -116,7 +116,6 @@ def fetch_credentials_gcs(request):
     data = {}
     data["developerKey"] = settings.DEVELOPER_KEY
     data["clientId"] = settings.CLIENT_ID
-    data["clientSecret"] = settings.CLIENT_SECRET
     data["appId"] = settings.APP_ID
     return JsonResponse(data)
     #sending google API client credentials received from environment variables to google_picker.js in json format

@@ -79,7 +79,6 @@ demo_proj
 
         ``DEVELOPER_KEY``=##################  
         ``CLIENT_ID``=##################  
-        ``CLIENT_SECRET``=##################  
         ``APP_ID``=##################
 
 5. For setting the environment variables, follow this
@@ -97,7 +96,6 @@ demo_proj
         ```py
         DEVELOPER_KEY = env("DEVELOPER_KEY")
         CLIENT_ID     = env("CLIENT_ID")
-        CLIENT_SECRET = env("CLIENT_SECRET")
         APP_ID        = env("APP_ID")
         ```
 
@@ -137,7 +135,7 @@ demo_proj
 
 5. Put the google api client secret json file with name as ``credentials_gcs.json`` in ``credentials_dir`` directory
 
-6. Set the Browser API keys obtained from the Google API Console in the ``.env`` file in project directory
+6. Set the Django Secret Key and Browser API keys obtained from the Google API Console in the ``.env`` file in project directory
 
 7. Run ``python manage.py migrate`` to create the doclib models.
 

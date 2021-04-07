@@ -3,7 +3,6 @@
 var developerKey = "";
 // The Client ID obtained from the Google API Console. Replace with your own Client ID.
 var clientId = ""
-var clientSecret = ""
 // Replace with your own project number from console.developers.google.com.
 // See "Project number" under "IAM & Admin" > "Settings"
 var appId = "";
@@ -28,7 +27,6 @@ fetch("fetch_cred_gcs",{
     // setting the parameters
     developerKey = data["developerKey"];
     clientId = data["clientId"];
-    clientSecret = data["clientSecret"];
     appId = data["appId"];
 })
 

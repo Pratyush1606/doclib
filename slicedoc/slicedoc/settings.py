@@ -130,5 +130,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # media directory in the root direc
 
 DEVELOPER_KEY = env("DEVELOPER_KEY")
 CLIENT_ID     = env("CLIENT_ID")
-CLIENT_SECRET = env("CLIENT_SECRET")
 APP_ID        = env("APP_ID")
