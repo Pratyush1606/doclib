@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block body_block %}
+<h2>Digimocker Registration</h2>
 <script type="text/javascript">
   var check = function() {
   if (document.getElementById('pswd').value ==
@@ -13,7 +14,7 @@
   }
 }
 </script>
-<form action="{% url 'doclib:register_Digimocker' %}" method="POST" enctype="multipart/form-data">>
+<form action="{% url 'doclib:register_Digimocker' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="jumbotron">
     <label for="">Name (Minimum 6 chracters)<input type="text"  name="name" value="" placeholder="Enter Your Name" required></label>
@@ -29,5 +30,9 @@
     <button class="btn btn-success"><a href="{% url 'doclib:login_Digimocker' %}">Login</a></button>
   </div>
 </form>
+<br>
+<div>
+    <a class="btn btn-primary" href="{% url 'doclib:login_Digimocker' %}">Cancel</a>
+</div>
 
 {% endblock %}

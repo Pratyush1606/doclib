@@ -37,7 +37,7 @@ def index(request):
     is provided with the choice of storage service
     selection.
     '''
-    return render(request,'page0.html')
+    return render(request,'storage_service.html')
 
 class get_gcs_credentials(APIView):
     '''
@@ -45,7 +45,7 @@ class get_gcs_credentials(APIView):
     if user has selected it as a storage service.
     '''
     def get(self, request):
-        return render(request, "page1b.html")
+        return render(request, "gcs.html")
         #rendering HTML Form Page for getting credentials of google cloud bucket
 
     def post(self, request):
@@ -70,7 +70,7 @@ class get_s3_credentials(APIView):
     if user has selected it as a storage service.
     '''
     def get(self, request):
-        return render(request, "page1a.html")
+        return render(request, "aws_s3.html")
         #rendering HTML Form Page for getting credentials of amazon s3 bucket
 
     def post(self, request):
@@ -130,7 +130,7 @@ class local_api(APIView):
     parser_classes = (MultiPartParser, FormParser)
     def get(self, request):
         form = DocSerializer()
-        return render(request, 'page3.html')
+        return render(request, 'local_source.html')
         #rendering HTML Form Page for uploading local files
 
     def post(self, request, *args, **kwargs):
@@ -140,6 +140,9 @@ class local_api(APIView):
         for f in request.FILES.getlist("files"):
             file = fs.save(f.name,f)
             temp = {"name":file,"url":"local_storage","size":fs.size(file)}
+            # temp["name"] = file
+            # temp["url"] = "local_storage"
+            # temp["size"] = fs.size(file)
             all_local_files.append(temp)
 
         file_serializer = DocSerializer(data=all_local_files, many=True)
@@ -157,7 +160,7 @@ class login_dm(APIView):
     view for signing in the digimocker user account
     '''
     def get(self, request):
-        return render(request,'page4.html')
+        return render(request,'login_digimocker.html')
         #rendering HTML Form Page for user to login digimocker
 
     def post(self, request):
@@ -171,6 +174,7 @@ class login_dm(APIView):
             return HttpResponse(status=response.status_code)
         print("LOGIN: ",response.status_code)
         authToken = str(response.text)
+        print("AUTH",authToken)
         #setting auth-token on successful user login to digimocker
 
         request.session['token'] = authToken
@@ -197,7 +201,7 @@ class register_dm(APIView):
     view for registering as a new user in digimocker
     '''
     def get(self, request):
-        return render(request,'page5.html')
+        return render(request,'register_digimocker.html')
         #rendering HTML Form Page for user to register digimocker
 
     def post(self, request):
@@ -282,7 +286,7 @@ def render_files(request):
     files_obj=fileDoc.objects.all().order_by('-size')
     #getting files metadata from models, sequenced in reverse order of their size
 
-    return render(request,'page2.html',{'files':files_obj})
+    return render(request,'source_display.html',{'files':files_obj})
     #rendering to files display page
 
 def delete_file(request, id):
@@ -383,7 +387,7 @@ def upload(request):
     elif(result[0]==True):
         #files get successfully uploaded
         clear_user_data_from_app()
-        return render(request,"page0.html",{'message':True})
+        return render(request,"storage_service.html",{'message':True})
     else:
         #error occured while uploading
         clear_user_data_from_app()
