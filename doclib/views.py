@@ -67,7 +67,6 @@ class get_gcs_credentials(APIView):
         except Exception as e:
             return "error"
 
-
 class get_s3_credentials(APIView):
     '''
     view for getting credentials for accessing amazon s3 bucket,
@@ -89,7 +88,6 @@ class get_s3_credentials(APIView):
             
         except Exception as e:
             print(e)
-
 
 @csrf_exempt
 def google_api(request):
@@ -152,7 +150,6 @@ class local_api(APIView):
         else:
             return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class login_dm(APIView):
     '''
     view for signing in the digimocker user account
@@ -208,7 +205,6 @@ class register_dm(APIView):
             return HttpResponse(status=response.status_code)
         # rendering HTML Form Page for user to login digimocker on successful register
         return redirect("/doclib/login_digimocker")
-
 
 class upload_to_dm(APIView):
     '''

@@ -55,7 +55,6 @@ class googleAPI:
                 media_request = self.drive_service.files().get(fileId=file['file_id'])
             else:
                 media_request = self.drive_service.files().get_media(fileId=file['file_id'])
-            print(media_request)
             self.check_name(file)
             fh = io.FileIO(os.path.join(media_dir, file['name']), 'wb')
             downloader = MediaIoBaseDownload(fh, media_request)
